@@ -3,6 +3,7 @@ package org.example;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -28,6 +29,41 @@ public class RahulShetty1 {
         //ForgetPassowrd
 
         driver.findElement(By.linkText("Forgot your password?")).click();
+
+        driver.findElement(By.cssSelector("input[placeholder='Name']")).sendKeys("Mihir Patel");
+        driver.findElement(By.cssSelector("input[placeholder='Email']")).sendKeys("mihirpatel@yopmail.com");
+        driver.findElement(By.cssSelector("input[placeholder='Phone Number']")).sendKeys("9365981239");
+
+        driver.findElement(By.cssSelector("button[class='reset-pwd-btn']")).click();
+
+        System.out.println(driver.findElement(By.xpath("//p[@class='infoMsg']")).getText());
+
+        driver.findElement(By.cssSelector("button[class='go-to-login-btn']")).click();
+
+        Thread.sleep(2000);
+
+        //LoginPage
+
+        driver.findElement(By.cssSelector("input[placeholder='Username']")).sendKeys("Mihir Patel");
+        driver.findElement(By.cssSelector("input[placeholder='Password']")).sendKeys("rahulshettyacademy");
+
+        driver.findElement(By.cssSelector("input[id='chkboxOne']")).click();
+        driver.findElement(By.cssSelector("input[id='chkboxTwo']")).click();
+
+        driver.findElement(By.cssSelector("button[class='submit signInBtn']")).click();
+
+        Thread.sleep(2000);
+
+        Assert.assertEquals(driver.findElement(By.tagName("p")).getText(), "You are successfully logged in.");
+
+        Thread.sleep(1000);
+
+        //Logout
+        driver.findElement(By.cssSelector("button[class='logout-btn']")).click();
+
+        driver.quit();
+
+
 
 
     }
