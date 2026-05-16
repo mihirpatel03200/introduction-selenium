@@ -43,8 +43,8 @@ public class RahulShetty1 {
         Thread.sleep(2000);
 
         //LoginPage
-
-        driver.findElement(By.cssSelector("input[placeholder='Username']")).sendKeys("Mihir Patel");
+        String name = "Mihir Patel";
+        driver.findElement(By.cssSelector("input[placeholder='Username']")).sendKeys(name);
         driver.findElement(By.cssSelector("input[placeholder='Password']")).sendKeys("rahulshettyacademy");
 
         driver.findElement(By.cssSelector("input[id='chkboxOne']")).click();
@@ -55,6 +55,8 @@ public class RahulShetty1 {
         Thread.sleep(2000);
 
         Assert.assertEquals(driver.findElement(By.tagName("p")).getText(), "You are successfully logged in.");
+         Thread.sleep(1000);
+        Assert.assertEquals(driver.findElement(By.cssSelector("div[class='login-container'] h2")).getText(),"Hello " +name+ ",");
 
         Thread.sleep(1000);
 
