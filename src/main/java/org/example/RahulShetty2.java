@@ -48,6 +48,10 @@ public class RahulShetty2 {
 
         driver.findElement(By.cssSelector("div[id = 'glsctl00_mainContent_ddl_destinationStation1_CTNR'] a[value='BOM']")).click();
 
+        driver.findElement(By.cssSelector(".ui-datepicker-week-end.ui-datepicker-current-day")).click();
+
+        Thread.sleep(2000);
+
         driver.findElement(By.xpath("//input[@id='autosuggest']")).sendKeys("ind");
 
         List <WebElement> options = driver.findElements(By.cssSelector("li[class='ui-menu-item'] a"));
@@ -58,6 +62,29 @@ public class RahulShetty2 {
                 break;
             }
         }
+
+        Assert.assertFalse(driver.findElement(By.cssSelector("input[id='ctl00_mainContent_chk_friendsandfamily']")).isSelected());
+        driver.findElement(By.cssSelector("input[id='ctl00_mainContent_chk_friendsandfamily']")).click();
+        Assert.assertTrue(driver.findElement(By.cssSelector("input[id='ctl00_mainContent_chk_friendsandfamily']")).isSelected());
+//        System.out.println(driver.findElement(By.cssSelector("input[id='ctl00_mainContent_chk_friendsandfamily']")).isSelected());
+
+        System.out.println(driver.findElements(By.cssSelector("input[type='checkbox']")).size());
+
+
+        System.out.println(driver.findElement(By.id("Div1")).getDomAttribute("style"));
+        driver.findElement(By.cssSelector("input[id='ctl00_mainContent_rbtnl_Trip_1']")).click();
+        System.out.println(driver.findElement(By.id("Div1")).getDomAttribute("style"));
+
+        if(driver.findElement(By.id("Div1")).getDomAttribute("style").contains("0.5")){
+            System.out.println("Return date is disable");
+            Assert.assertTrue(true);
+        }
+        else {
+            System.out.println("Return date is enable");
+            Assert.assertFalse(false);
+
+        }
+
 
 
 
