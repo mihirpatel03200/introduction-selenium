@@ -19,7 +19,7 @@ public class RahulShetty4 {
 
         driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
 
-        String[] vigges = {"Cucumber", "Potato", "Brocolli"};
+        String[] vigges = {"Brocolli", "Cucumber", "Potato", "Tomato"};
 
         List <WebElement> products = driver.findElements(By.cssSelector("h4.product-name"));
         int j = 0;
@@ -33,9 +33,9 @@ public class RahulShetty4 {
             if (itemsList.contains(formatedName)) {
 
                 j++;
-                driver.findElements(By.xpath("//button[text()='ADD TO CART']")).get(i).click();
+                driver.findElements(By.xpath("//div[@class = 'product-action']")).get(i).click();
 
-                if (j == 3) {
+                if (j == vigges.length) {
                     break;
                 }
             }
