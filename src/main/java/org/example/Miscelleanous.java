@@ -20,6 +20,6 @@ public class Miscelleanous {
         driver.get("https://rahulshettyacademy.com/AutomationPractice/");
 
         File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(src, new File("C:\\Users\\mihir\\OneDrive\\Pictures"));
+        FileUtils.copyFile(src, new File("C:\\Users\\mihir\\OneDrive\\Pictures\\screenshot.jpeg"));
     }
 }
