@@ -26,6 +26,6 @@ public class BrokenLinks {
         connection.setRequestMethod("HEAD");
         connection.connect();
         Integer statusCode = connection.getResponseCode();
-        System.out.println(statusCode   );
+        System.out.println(statusCode);
     }
 }
