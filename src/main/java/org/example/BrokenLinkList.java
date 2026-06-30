@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -22,6 +23,7 @@ public class BrokenLinkList {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        SoftAssert a = new SoftAssert();
 
         driver.get("https://rahulshettyacademy.com/AutomationPractice/");
 
@@ -37,11 +39,9 @@ public class BrokenLinkList {
             connection.connect();
             int statusCode = connection.getResponseCode();
             System.out.println(statusCode);
-            if (statusCode >= 400) {
-                System.out.println("This link is not working : - " + link.getText() + " it is Broken with responses " + statusCode);
-                Assert.assertTrue(true);
-            }
+            a.assertTrue(statusCode<400, "This link is not working : - " + link.getText() + " it is Broken with responses " + statusCode);
 
         }
+        a.assertAll();
     }
 }
